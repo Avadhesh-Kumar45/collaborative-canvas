@@ -4,7 +4,11 @@
   "description": "Real-time collaborative drawing canvas (vanilla JS + Node + Socket.io)",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "author": "",
   "license": "MIT",
