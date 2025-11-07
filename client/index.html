@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Collaborative Canvas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="navbar">
+      <div class="brand">Collaborative Canvas</div>
+      <div class="nav-controls">
+        <div class="tool-group" role="toolbar" aria-label="tools">
+          <!-- keep a hidden select for backward compatibility with existing JS -->
+          <select id="tool" hidden>
+            <option value="brush">Brush</option>
+            <option value="eraser">Eraser</option>
+          </select>
+          <button class="icon-btn active" id="btn-brush" data-tool="brush" title="Brush">🖌</button>
+          <button class="icon-btn" id="btn-eraser" data-tool="eraser" title="Eraser">🧽</button>
+        </div>
+
+        <label class="color-wrap" title="Color">
+          <input type="color" id="color" value="#000000">
+        </label>
+
+        <label class="width-wrap" title="Size">
+          <input type="range" id="width" min="1" max="40" value="4">
+        </label>
+
+        <div class="action-group">
+          <button id="undo" class="flat">↶</button>
+          <button id="redo" class="flat">↷</button>
+          <button id="clear" class="flat">Clear</button>
+          <button id="save" class="flat">Save</button>
+        </div>
+
+        <label class="room-label">Room: <input id="room" value="default"/></label>
+        <button id="join" class="join-btn">Join</button>
+      </div>
+      <button id="toggle-side" class="side-toggle" aria-label="Toggle sidebar">☰</button>
+    </header>
+    <div id="side">
+      <div id="users">Users:</div>
+      <!-- <div id="cursors">Cursors:</div> -->
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Load the app as an ES module so imports/exports work -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
